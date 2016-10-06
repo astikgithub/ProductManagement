@@ -38,6 +38,19 @@ namespace AngularJSWithWebApi.Interfaces.DataRepository {
         /// <returns></returns>
         UserEntity UpdateUser(UserEntity userEntity);
 
+        /// <summary>
+        /// DeleteUser
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         bool DeleteUser(int id);
+
+        /// <summary>
+        /// CheckUserLogin
+        /// </summary>
+        /// <param name="emailId"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        ResponseEntity CheckUserLogin(string emailId, string password);
     }
 }

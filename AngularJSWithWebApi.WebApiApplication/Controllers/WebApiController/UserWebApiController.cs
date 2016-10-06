@@ -78,5 +78,15 @@ namespace AngularJSWithWebApi.WebApiApplication.Controllers.WebApiController {
         public bool DeleteUser(int id) {
             return iUserManager.DeleteUser(id);
         }
+
+        /// <summary>
+        /// CheckUserLogin
+        /// </summary>
+        /// <param name="userEntity"></param>
+        /// <returns></returns>
+        public ResponseEntity CheckUserLogin(UserEntity userEntity) {
+            return iUserManager.CheckUserLogin(userEntity.EmailId, userEntity.Password);
+
+        }
     }
 }

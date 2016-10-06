@@ -13,5 +13,9 @@ namespace AngularJSWithWebApi.WebApiApplication.Controllers.MvcController
         {
             return View();
         }
+
+        public ActionResult UserLogin() {
+            return View();
+        }
     }
 }

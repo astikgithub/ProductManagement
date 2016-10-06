@@ -14,7 +14,8 @@
             getUserById: getUserById,
             AddUser: AddUser,
             UpdateUser: UpdateUser,
-            DeleteUser : DeleteUser
+            DeleteUser: DeleteUser,
+            CheckLoginUser:CheckLoginUser
         };
 
         return service;
@@ -22,17 +23,20 @@
         function getUserList() {
             return $http.get(baseUrl + "GetUserList");
         }
-        function getUserById() {
-            return $http.get(baseUrl + "GetUserById");
+        function getUserById(id) {
+            return $http.get(baseUrl + "GetUserById/"+ id);
         }
-        function AddUser() {
-            return $http.post(baseUrl + "AddUser");
+        function AddUser(userModel) {
+            return $http.post(baseUrl + "AddUser", userModel);
         }
-        function UpdateUser() {
-            return $http.post(baseUrl + "UpdateUser");
+        function UpdateUser(userModel) {
+            return $http.post(baseUrl + "UpdateUser", userModel);
         }
-        function DeleteUser() {
-            return $http.delete(baseUrl + "DeleteUser");
+        function DeleteUser(id) {
+            return $http.delete(baseUrl + "DeleteUser/"+id);
+        }
+        function CheckLoginUser(userModel) {
+            return $http.post(baseUrl + "CheckUserLogin", userModel);
         }
     }
 })();

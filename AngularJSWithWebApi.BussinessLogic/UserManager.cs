@@ -51,5 +51,15 @@ namespace AngularJSWithWebApi.BussinessLogic {
         public UserEntity UpdateUser(UserEntity userEntity) {
             return iUserDataRepository.UpdateUser(userEntity);
         }
+
+        /// <summary>
+        /// CheckUserLogin
+        /// </summary>
+        /// <param name="emailId"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public ResponseEntity CheckUserLogin(string emailId, string password) {
+            return iUserDataRepository.CheckUserLogin(emailId, password);
+        }
     }
 }

@@ -21,9 +21,9 @@ namespace AngularJSWithWebApi.DataRepository {
             userdata.MobileNo = userEntity.MobileNo;
             userdata.EmailId = userEntity.EmailId;
             userdata.Password = userEntity.Password;
-            userdata.UserName = userEntity.UserName;
             userdata.IsAdmin = userEntity.IsAdmin;
             userdata.UpdatedDate = DateTime.Now;
+            dbContext.tblUsers.Add(userdata);
             dbContext.SaveChanges();
             userEntity.UserId = userdata.UserId;
             userEntity.CreatedDate = userdata.CreatedDate;
@@ -48,7 +48,6 @@ namespace AngularJSWithWebApi.DataRepository {
             UserEntity userEntity = new UserEntity {
                 Name = tblUser.Name,
                 EmailId = tblUser.EmailId,
-                UserName = tblUser.Name,
                 Password = tblUser.Password,
                 MobileNo = tblUser.MobileNo,
                 IsAdmin = tblUser.IsAdmin,
@@ -65,7 +64,6 @@ namespace AngularJSWithWebApi.DataRepository {
                 UserEntity userEntity = new UserEntity();
                 userEntity.Name = user.Name;
                 userEntity.Password = user.Password;
-                userEntity.UserName = user.UserName;
                 userEntity.UserId = user.UserId;
                 userEntity.EmailId = user.EmailId;
                 userEntity.IsAdmin = user.IsAdmin;
@@ -83,12 +81,31 @@ namespace AngularJSWithWebApi.DataRepository {
             tblUser.MobileNo = userEntity.MobileNo;
             tblUser.EmailId = userEntity.EmailId;
             tblUser.Password = userEntity.Password;
-            tblUser.UserName = userEntity.UserName;
             tblUser.IsAdmin = userEntity.IsAdmin;
             tblUser.UpdatedDate = DateTime.Now;
             dbContext.SaveChanges();
             userEntity.UpdatedDate = tblUser.UpdatedDate;
             return userEntity;
+        }
+
+        /// <summary>
+        /// CheckUserLogin
+        /// </summary>
+        /// <param name="emailId"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        public ResponseEntity CheckUserLogin(string emailId, string password) {
+            ResponseEntity response =new ResponseEntity();
+            var userData = dbContext.tblUsers.FirstOrDefault(u => u.EmailId == emailId && u.Password == password);
+            if(userData != null) {
+                response.Success = true;
+                response.CurrentUser = userData.Name;
+            }
+            else {
+                response.Error = true;
+                response.Message = "Invalid emailId or password.";
+            }
+            return response;
         }
     }
 }

@@ -23,16 +23,16 @@
             </div>
         </div>
 
-    <div class="col-lg-10" style="height:95px">
-            <div ng-show="error" class="alert alert-danger" role="alert">
+    <div class="col-lg-10" style="height:95px" ng-cloak>
+            <div ng-if="error" class="alert alert-danger" role="alert">
                 <button type="button" class="close"><span ng-click="error=false">×</span><span class="sr-only">Close</span></button>
                 <p>{{successMessage}}</p>
             </div>
-            <div ng-show="success" class="alert alert-success" role="alert">
+            <div ng-if="success" class="alert alert-success" role="alert">
                 <button type="button" class="close"><span ng-click="success=false">×</span><span class="sr-only">Close</span></button>
                 <p>{{successMessage}}</p>
             </div>
-            <div ng-show="warning" class="alert alert-warning" role="alert">
+            <div ng-if="warning" class="alert alert-warning" role="alert">
                 <button type="button" class="close"><span ng-click="warning=false">×</span><span class="sr-only">Close</span></button>
                 <p>{{successMessage}}</p>
             </div>
@@ -52,8 +52,8 @@
                             <label for="title" class="col-sm-3 control-label">Product Name</label>
                             <div class="col-sm-8">
                                 <input type="text" data-ng-model="Product.ProductName" class="form-control" name="ProductName" ng-required="true"/>
-                                <span ng-show="addProductForm.ProductName.$dirty && addProductForm.ProductName.$error.required" class="k-callout"></span>
-                                <span ng-show="addProductForm.ProductName.$dirty && addProductForm.ProductName.$error.required" class="field-validation-error">Please enter product name</span>
+                                <span ng-if="addProductForm.ProductName.$dirty && addProductForm.ProductName.$error.required" class="k-callout"></span>
+                                <span ng-if="addProductForm.ProductName.$dirty && addProductForm.ProductName.$error.required" class="field-validation-error">Please enter product name</span>
                             </div>
                         </div>
                         <div class="form-group">
@@ -66,18 +66,18 @@
                             <label for="title" class="col-sm-3 control-label">Price</label>
                             <div class="col-sm-8">
                                 <input type="number" data-ng-model="Product.Price" class="form-control" name="Price" ng-required="true" />
-                                <span ng-show="addProductForm.Price.$dirty && (addProductForm.Price.$invalid ||addProductForm.Price.$error.required)" class="k-callout"></span>
-                                <span ng-show="addProductForm.Price.$dirty && addProductForm.Price.$invalid && !addProductForm.Price.$error.required" class="field-validation-error">Please enter valid price</span>
-                                <span ng-show="addProductForm.Price.$dirty && addProductForm.Price.$error.required" class="field-validation-error">Please enter price</span>
+                                <span ng-if="addProductForm.Price.$dirty && (addProductForm.Price.$invalid ||addProductForm.Price.$error.required)" class="k-callout"></span>
+                                <span ng-if="addProductForm.Price.$dirty && addProductForm.Price.$invalid && !addProductForm.Price.$error.required" class="field-validation-error">Please enter valid price</span>
+                                <span ng-if="addProductForm.Price.$dirty && addProductForm.Price.$error.required" class="field-validation-error">Please enter price</span>
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="title" class="col-sm-3 control-label">Quantity</label>
                             <div class="col-sm-8">
                                 <input type="number" data-ng-model="Product.Quantity" class="form-control" name="Quantity" ng-required="true" />
-                                <span ng-show="addProductForm.Quantity.$dirty && (addProductForm.Quantity.$invalid ||addProductForm.$error.required)" class="k-callout"></span>
-                                <span ng-show="addProductForm.Quantity.$dirty && addProductForm.Quantity.$invalid && !addProductForm.Quantity.$error.required" class="field-validation-error">Please enter valid quantity</span>
-                                <span ng-show="addProductForm.Quantity.$dirty && addProductForm.Quantity.$error.required" class="field-validation-error">Please enter quantity</span>
+                                <span ng-if="addProductForm.Quantity.$dirty && (addProductForm.Quantity.$invalid ||addProductForm.$error.required)" class="k-callout"></span>
+                                <span ng-if="addProductForm.Quantity.$dirty && addProductForm.Quantity.$invalid && !addProductForm.Quantity.$error.required" class="field-validation-error">Please enter valid quantity</span>
+                                <span ng-if="addProductForm.Quantity.$dirty && addProductForm.Quantity.$error.required" class="field-validation-error">Please enter quantity</span>
                             </div>
                         </div>
                         <div class="form-group">

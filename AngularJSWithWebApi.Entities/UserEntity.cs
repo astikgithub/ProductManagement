@@ -15,10 +15,6 @@ namespace AngularJSWithWebApi.Entities {
         {
             get; set;
         }
-        public string UserName
-        {
-            get; set;
-        }
 
         public string Password
         {

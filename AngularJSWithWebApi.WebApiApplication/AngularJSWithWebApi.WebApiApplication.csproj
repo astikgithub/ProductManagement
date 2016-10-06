@@ -795,6 +795,7 @@
     <Content Include="Views\Product\Product.cshtml" />
     <Content Include="Views\Product\ProductInline.cshtml" />
     <Content Include="Views\User\UserList.cshtml" />
+    <Content Include="Views\User\UserLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

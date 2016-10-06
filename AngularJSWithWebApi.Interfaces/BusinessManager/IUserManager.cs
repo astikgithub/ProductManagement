@@ -40,5 +40,13 @@ namespace AngularJSWithWebApi.Interfaces.BusinessManager {
         UserEntity UpdateUser(UserEntity userEntity);
 
         bool DeleteUser(int id);
+
+        /// <summary>
+        /// CheckUserLogin
+        /// </summary>
+        /// <param name="emailId"></param>
+        /// <param name="password"></param>
+        /// <returns></returns>
+        ResponseEntity CheckUserLogin(string emailId, string password);
     }
 }
