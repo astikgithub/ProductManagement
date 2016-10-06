@@ -272,6 +272,10 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\ProductDatabase.mdf" />
+    <Content Include="App_Data\ProductDatabase_log.ldf">
+      <DependentUpon>ProductDatabase.mdf</DependentUpon>
+    </Content>
     <Content Include="Areas\HelpPage\HelpPage.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -798,7 +802,6 @@
     <Content Include="Views\User\UserLogin.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
     <Folder Include="Scripts\AngularApp\Filters\" />
   </ItemGroup>
   <ItemGroup>
