@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularJSWithWebApi.BussinessLogic", "AngularJSWithWebApi.BussinessLogic", "{B3075D83-DDA5-4DB7-B576-F4DE4E382F18}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularJSWithWebApi.DataRepository", "AngularJSWithWebApi.DataRepository", "{209A657B-0150-455F-89C2-F9EC26EC5D16}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularJSWithWebApi.Entities", "AngularJSWithWebApi.Entities", "{7C4FC3CF-2C4B-4F9C-99AF-9D871861F8CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularJSWithWebApi.Interfaces", "AngularJSWithWebApi.Interfaces", "{830C3693-9CD1-49A5-B57C-6E385F553619}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularJSWithWebApi.MockDataRepository", "AngularJSWithWebApi.MockDataRepository", "{04FEA645-468D-4D15-AE7D-25189E5003F2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularJSWithWebApi.WebApi", "AngularJSWithWebApi.WebApi", "{CC9DD85F-B8E7-4046-A60C-00967DACEA6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AngularJSWithWebApi.WebApi.Tests", "AngularJSWithWebApi.WebApi.Tests", "{DB77F5F8-A2C1-4E00-BEAC-AB18452097ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSWithWebApi.BussinessLogic", "AngularJSWithWebApi.BussinessLogic\AngularJSWithWebApi.BussinessLogic.csproj", "{9D02EEF2-F336-4EB2-ABCF-5092E3B2CBBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSWithWebApi.Interfaces", "AngularJSWithWebApi.Interfaces\AngularJSWithWebApi.Interfaces.csproj", "{90F75703-4B8C-4DF0-ACDA-D60440B96163}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSWithWebApi.MockDataRepository", "AngularJSWithWebApi.MockDataRepository\AngularJSWithWebApi.MockDataRepository.csproj", "{C7305820-91C9-423F-BB74-1E489A8C2D7B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSWithWebApi.WebApiApplication", "AngularJSWithWebApi.WebApiApplication\AngularJSWithWebApi.WebApiApplication.csproj", "{28E1BFA3-8E4D-4103-8002-A3E0B77201AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSWithWebApi.WebApiApplication.Tests", "AngularJSWithWebApi.WebApiApplication.Tests\AngularJSWithWebApi.WebApiApplication.Tests.csproj", "{939A02D0-3EAE-4451-88BD-05E0560BAAA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSWithWebApi.DataRepository", "AngularJSWithWebApi.DataRepository\AngularJSWithWebApi.DataRepository.csproj", "{1DA753A0-9C7D-4B20-AED3-510A6C05144C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AngularJSWithWebApi.Entities", "AngularJSWithWebApi.Entities\AngularJSWithWebApi.Entities.csproj", "{11CA13E5-1789-4418-B25F-221B84728564}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9D02EEF2-F336-4EB2-ABCF-5092E3B2CBBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D02EEF2-F336-4EB2-ABCF-5092E3B2CBBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D02EEF2-F336-4EB2-ABCF-5092E3B2CBBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D02EEF2-F336-4EB2-ABCF-5092E3B2CBBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F75703-4B8C-4DF0-ACDA-D60440B96163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F75703-4B8C-4DF0-ACDA-D60440B96163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F75703-4B8C-4DF0-ACDA-D60440B96163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F75703-4B8C-4DF0-ACDA-D60440B96163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7305820-91C9-423F-BB74-1E489A8C2D7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7305820-91C9-423F-BB74-1E489A8C2D7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7305820-91C9-423F-BB74-1E489A8C2D7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7305820-91C9-423F-BB74-1E489A8C2D7B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{28E1BFA3-8E4D-4103-8002-A3E0B77201AC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28E1BFA3-8E4D-4103-8002-A3E0B77201AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28E1BFA3-8E4D-4103-8002-A3E0B77201AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28E1BFA3-8E4D-4103-8002-A3E0B77201AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{939A02D0-3EAE-4451-88BD-05E0560BAAA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{939A02D0-3EAE-4451-88BD-05E0560BAAA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{939A02D0-3EAE-4451-88BD-05E0560BAAA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{939A02D0-3EAE-4451-88BD-05E0560BAAA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DA753A0-9C7D-4B20-AED3-510A6C05144C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DA753A0-9C7D-4B20-AED3-510A6C05144C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DA753A0-9C7D-4B20-AED3-510A6C05144C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DA753A0-9C7D-4B20-AED3-510A6C05144C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11CA13E5-1789-4418-B25F-221B84728564}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11CA13E5-1789-4418-B25F-221B84728564}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11CA13E5-1789-4418-B25F-221B84728564}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11CA13E5-1789-4418-B25F-221B84728564}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9D02EEF2-F336-4EB2-ABCF-5092E3B2CBBF} = {B3075D83-DDA5-4DB7-B576-F4DE4E382F18}
+		{90F75703-4B8C-4DF0-ACDA-D60440B96163} = {830C3693-9CD1-49A5-B57C-6E385F553619}
+		{C7305820-91C9-423F-BB74-1E489A8C2D7B} = {04FEA645-468D-4D15-AE7D-25189E5003F2}
+		{28E1BFA3-8E4D-4103-8002-A3E0B77201AC} = {CC9DD85F-B8E7-4046-A60C-00967DACEA6D}
+		{939A02D0-3EAE-4451-88BD-05E0560BAAA5} = {DB77F5F8-A2C1-4E00-BEAC-AB18452097ED}
+		{1DA753A0-9C7D-4B20-AED3-510A6C05144C} = {209A657B-0150-455F-89C2-F9EC26EC5D16}
+		{11CA13E5-1789-4418-B25F-221B84728564} = {7C4FC3CF-2C4B-4F9C-99AF-9D871861F8CA}
+	EndGlobalSection
+EndGlobal

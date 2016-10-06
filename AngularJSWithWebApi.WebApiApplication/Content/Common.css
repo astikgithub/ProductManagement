@@ -1,0 +1,211 @@
+﻿.sortorder:after {
+    content: '\25b2';  
+}
+
+.sortorder.reverse:after {
+    content: '\25bc';  
+}
+
+.page-size-dropdown {
+    position: absolute;
+    height: 33px;
+    width: 50px;
+    margin-left: -15px !important;
+}
+
+input#cbProduct {
+    margin-left :10px;
+    margin-right :5px;
+}
+
+.display-item {
+    float :right;
+}
+
+.items-per-page {
+    display: inline-block;
+    padding-left: 0;
+    width: 100px;
+    margin-left: 60px !important;
+    margin-top: 11px !important;
+    position: absolute; 
+    border-radius: 4px;
+}
+.alert {
+    margin-left: 170px;
+    padding: 5px !important;
+    text-align: center;
+    max-width: 350px;
+}
+
+.table tbody + tbody {
+    border-top :1px solid rgba(25, 24, 24, 0.14) !important;
+}
+
+.field-validation-error {
+    background-color: #F2DEDE;
+    color: #B94A48;
+    border: 1px solid #EED3D7;
+    border-radius: 4px 4px 4px 4px;
+    padding: 1px 18px 2px 5px;
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+    opacity: 0.9;
+    z-index: 1;
+    position: absolute;
+    margin-top: 4px;
+    margin-left: 15px;
+}
+
+ .k-callout {
+    border-bottom: 8px solid #EED3D7;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    margin-left: 20px;
+    margin-top: -2px;
+    width: auto;
+    position:absolute;
+}
+
+.tbody-header {
+    position: absolute;
+    background-color: whitesmoke;
+    margin-top:-82px;
+    margin-left:-1px;
+    border-top :1px solid rgba(25, 24, 24, 0.14) !important;
+}
+
+.pagination {
+    margin:5px 0 !important;
+}
+
+.headermargin {
+    margin-top : -60px !important;
+}
+
+.container {
+    max-width: 1490px !important;
+}
+
+.product-container {
+    max-height:540px;
+    min-height:0px;
+    overflow-y:scroll;
+    overflow-x:visible;
+    display:inline-block;
+    margin-top:85px;
+    border-bottom:1px solid rgba(25, 24, 24, 0.14) !important;
+}
+
+td, th {
+    width:290px !important;
+}
+
+.table {
+    margin-bottom: 0px !important;
+}
+
+.table tbody > tr > td {
+    padding-bottom:0px !important;
+}
+
+.table-action-header {
+    width: 259px !important;
+    padding-left: 22px !important;
+    padding-bottom: 30px !important;
+}
+
+.ui-state-focus {
+    background: none !important;
+    background-color: #0974B3 !important;
+}
+
+.ui-widget-content {
+    border: 1px solid rgba(25, 24, 24, 0.14) !important;
+    z-index:1;
+    -webkit-box-shadow: 0px 1px 0px 1px rgba(187,193,199,1);
+    -moz-box-shadow: 0px 1px 0px 1px rgba(187,193,199,1);
+    box-shadow: 0px 1px 0px 1px rgba(187,193,199,1);
+}
+
+.action-operation-width {
+    width:242px !important;
+    text-align: center;
+}
+
+table th.resizing {
+    cursor: col-resize;
+}
+
+.textsuccess {
+    color: #468847;
+}
+
+.activerow {
+    background:whitesmoke ;
+}
+
+.toggle-filter-menu {
+    position: absolute;
+    background: #f5f5f5;
+    margin-left:270px;
+    z-index:2;
+    margin-top: -17px; 
+    border:1px solid #cccccc;
+    border-radius: 10px;
+}
+
+.glyphicon {
+    top:-25px !important;
+}
+
+.refresh-icon-position {
+    border: 1px solid gray;
+    padding: 3px 3px 3px 3px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.glyphiconrefresh {
+    position: relative;
+    top: 1px;
+    color:#777777;
+    cursor: pointer;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    -webkit-font-smoothing: antialiased;
+    font-style: normal;
+    font-weight: normal;
+    line-height: 1;
+}
+
+.k-loading-image {
+        background : url('Images/loading-image.gif') 40% 50% no-repeat;
+        width: 100%;
+        height: 100%;
+        z-index: 9999;
+        position: absolute;
+}
+
+.modal {
+    overflow-y : auto !important;
+}
+
+.badge {
+    border-top-left-radius: 0px !important;
+    border-top-right-radius: 0px !important;
+    border-bottom-right-radius: 0px !important;
+    border-bottom-left-radius: 10px !important;
+    margin-top: -8px;
+    margin-right: -8px;
+}
+
+.page-header {
+margin :15px 0 20px !important;
+}
+
+
+.formborder-set{
+    padding:30px;
+    border: 2px solid #dddddd;
+    border-radius:30px;
+}

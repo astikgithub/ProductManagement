@@ -1,0 +1,247 @@
+﻿
+@{
+    ViewBag.Title = "Product";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+    <div ng-app="productApp" data-ng-controller="productPopupController" class="container">
+        <div class="k-loading-image" id="loadingImg" ng-show="loadingImg" ng-init="loadingImg=true"></div>
+    <h2 class="page-header">Product List</h2>
+    <div class="col-lg-2" style="margin-left:-15px; margin-top:-18px">
+            <p style="margin-bottom: 15px;"><a ng-init="toggle=false" ng-click="toggle =!toggle" style="text-decoration:none; cursor:pointer">Toggle Filter</a></p>
+            <p><input type="button" data-ng-click="showadd()" class="btn btn-primary" id="btnAddRecord" value="Add Product" title="Add Product" style="margin-top:-10px" /></p>
+            <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                    Show/Hide Column
+                    <span class="caret">
+                    </span>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                    <li ng-repeat="item in showHideColumn"><input type="checkbox" id="cbProduct" ng-model="cbProduct" ng-change="productShowHide.{{item}} =funshowhideColumn(this)" />{{item}}</li>
+                </ul>
+            </div>
+        </div>
+
+    <div class="col-lg-10" style="height:95px">
+            <div ng-show="error" class="alert alert-danger" role="alert">
+                <button type="button" class="close"><span ng-click="error=false">×</span><span class="sr-only">Close</span></button>
+                <p>{{successMessage}}</p>
+            </div>
+            <div ng-show="success" class="alert alert-success" role="alert">
+                <button type="button" class="close"><span ng-click="success=false">×</span><span class="sr-only">Close</span></button>
+                <p>{{successMessage}}</p>
+            </div>
+            <div ng-show="warning" class="alert alert-warning" role="alert">
+                <button type="button" class="close"><span ng-click="warning=false">×</span><span class="sr-only">Close</span></button>
+                <p>{{successMessage}}</p>
+            </div>
+        </div>
+
+    <div class="modal fade" id="productModel" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="cancel(this,Product)">X</button>
+                    <h4 class="modal-title" id="myModalLabel" ng-hide="editMode">Add Product</h4>
+                    <h4 class="modal-title" id="myModalLabel" ng-show="editMode">Edit Product</h4>
+                </div>
+                <div class="modal-body">
+                    <form class="form-horizontal" role="form" name="addProductForm">
+                        <div class="form-group">
+                            <label for="title" class="col-sm-3 control-label">Product Name</label>
+                            <div class="col-sm-8">
+                                <input type="text" data-ng-model="Product.ProductName" class="form-control" name="ProductName" ng-required="true"/>
+                                <span ng-show="addProductForm.ProductName.$dirty && addProductForm.ProductName.$error.required" class="k-callout"></span>
+                                <span ng-show="addProductForm.ProductName.$dirty && addProductForm.ProductName.$error.required" class="field-validation-error">Please enter product name</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-3 control-label">Description</label>
+                            <div class="col-sm-8">
+                                <input type="text" data-ng-model="Product.Description" class="form-control" name="Description"/>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-3 control-label">Price</label>
+                            <div class="col-sm-8">
+                                <input type="number" data-ng-model="Product.Price" class="form-control" name="Price" ng-required="true" />
+                                <span ng-show="addProductForm.Price.$dirty && (addProductForm.Price.$invalid ||addProductForm.Price.$error.required)" class="k-callout"></span>
+                                <span ng-show="addProductForm.Price.$dirty && addProductForm.Price.$invalid && !addProductForm.Price.$error.required" class="field-validation-error">Please enter valid price</span>
+                                <span ng-show="addProductForm.Price.$dirty && addProductForm.Price.$error.required" class="field-validation-error">Please enter price</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="title" class="col-sm-3 control-label">Quantity</label>
+                            <div class="col-sm-8">
+                                <input type="number" data-ng-model="Product.Quantity" class="form-control" name="Quantity" ng-required="true" />
+                                <span ng-show="addProductForm.Quantity.$dirty && (addProductForm.Quantity.$invalid ||addProductForm.$error.required)" class="k-callout"></span>
+                                <span ng-show="addProductForm.Quantity.$dirty && addProductForm.Quantity.$invalid && !addProductForm.Quantity.$error.required" class="field-validation-error">Please enter valid quantity</span>
+                                <span ng-show="addProductForm.Quantity.$dirty && addProductForm.Quantity.$error.required" class="field-validation-error">Please enter quantity</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-3 col-sm-10">
+                                <span data-ng-hide="editMode">
+                                    <input type="submit" value="Save" ng-disabled="addProductForm.$invalid" data-ng-click="save()" class="btn btn-primary" />
+                                </span>
+                                <span data-ng-show="editMode">
+                                    <input type="submit" value="Update" ng-disabled="addProductForm.$invalid" data-ng-click="update()" class="btn btn-primary" />
+                                </span>
+                                <input type="button" value="Cancel" data-ng-click="cancel(this,Product)" class="btn btn-primary" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+        
+        <div>
+            <div class="product-container">
+                    <table id="tblProduct" class="table table-bordered table-responsive">
+                        <thead class="tbody-header" ng-class="{headermargin :toggle}">
+                            <tr>
+                                <th ng-hide="true">ProductId</th>
+                                <th ng-repeat="item in toggleFilterData" ng-include="getToggleFilter(item)" ng-hide=productShowHide.{{item}}></th>
+                                <th class="table-action-header">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href=""> Action </a>
+                                    <div></div>
+                                    <div></div>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tr ng-class="{textsuccess:{{product.ProductId==editidData}}}" dir-paginate="product in (filteredData =(productsData | filter:filterProduct |orderBy: productSorting)| itemsPerPage:numOfRec)">
+                            <td ng-hide="true">{{product.ProductId}} </td>
+                            <td tabindex="1" ng-hide="productShowHide.ProductName">{{product.ProductName}} </td>
+                            <td tabindex="1" ng-hide="productShowHide.Description">{{product.Description}} </td>
+                            <td tabindex="1" ng-hide="productShowHide.Price">{{product.Price| currency}} </td>
+                            <td tabindex="1" ng-hide="productShowHide.Quantity">{{product.Quantity}} </td>
+                            <td class="action-operation-width">
+                                <p>
+                                    <input tabindex="1" type="button" value="Edit" data-ng-click="edit(product)" class="btn btn-primary" />
+                                    <input tabindex="1" type="button" value="Delete" data-ng-click="showconfirm(product)" class="btn btn-primary" />
+                                    <input tabindex="1" type="button" value="Detail" data-ng-click="detail(product)" class="btn btn-primary" />
+                                </p>
+
+                            </td>
+                        </tr>
+                    </table>
+            </div>
+            </div>
+
+            <script type="text/ng-template" id="toggleTemplate" ng-cloak>
+                <div outside-click="togglefilter[item]=false">
+                    <a href="" ng-click="sortingList(item);"> {{item}} </a>
+                    <span class="sortorder" ng-show='productSorting.indexOf(item)>-1 || productSorting.indexOf("-"+item)>-1' ng-class="{reverse: productSorting.indexOf('-'+item)>-1}">
+                        <span class="badge pull-right top">{{productSorting.indexOf(item)>-1?productSorting.indexOf(item)+1: productSorting.indexOf("-"+item)+1}}</span>
+                    </span>
+                    <p><input tabindex="1" ng-hide="toggle" type="text" class="form-control" id="{{item}}" ng-model="filterProduct[item]" auto-complete /><span ng-show="toggle" ng-init="togglefilter[item]=false" ng-click="togglefilter[item]=!togglefilter[item]" class="glyphicon glyphicon-filter pull-right"></span></p>
+                    <div ng-show="togglefilter[item]" class="pull-right popover-content toggle-filter-menu">
+                        <p>Filter</p>
+                        <p>
+                            <select class="form-control" ng-model="filterOperator[item]" ng-init="filterOperator[item] =filterOperartorList[0].value" ng-options="option.value as option.text for option in filterOperartorList"></select>
+                        </p>
+                        <p>
+                            <input type="text" ng-model="filterValue[item]" class="form-control">
+                        </p>
+                        <input type="submit" value="Filter" ng-click="getToggleFilterData(item)" class="btn btn-primary pull-left">
+                        <input type="button" value="Clear" ng-click="clearToggleFilterData(item);" class="btn btn-primary pull-right">
+                    </div>
+                </div>
+            </script>
+
+            <dir-pagination-controls max-size="10" direction-links="true" boundary-links="true" template-url="~/Scripts/AngularApp/Views/dirPagination.tpl.html"></dir-pagination-controls>
+
+            <div class="modal fade" id="productDetailModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel">Product Detail</h4>
+                        </div>
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form" name="viewProduct">
+                                <div class="form-group">
+                                    <label for="Name" class="col-sm-3 control-label">Product Name:-</label>
+                                    <p class="col-sm-3 control-label col-lg-1">
+                                        {{Product.ProductName}}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="Address" class="col-sm-3 control-label">Description:-</label>
+                                    <p class="col-sm-3 control-label col-lg-1">
+                                        {{Product.Description}}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ContactNo" class="col-sm-3 control-label">Price:-</label>
+                                    <p class="col-sm-3 control-label col-lg-1">
+                                        {{Product.Price}}
+                                    </p>
+                                </div>
+                                <div class="form-group">
+                                    <label for="ContactNo" class="col-sm-3 control-label">Quantity:-</label>
+                                    <p class="col-sm-3 control-label col-lg-1">
+                                        {{Product.Quantity}}
+                                    </p>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">X</button>
+                            <h4 class="modal-title" id="myModalLabel">Confirm Action</h4>
+                        </div>
+                        <div class="modal-body">
+                            Are you sure to delete?
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-ng-click="delete()">Ok</button>
+                            <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    <script>
+        $(document).keydown(function (e) {
+            var appElement = document.querySelector('[ng-app=productApp]');
+            var appScope = angular.element(appElement).scope();
+            if (e.keyCode == 13 && appScope.editMode) {
+                appScope.$apply(function () {
+                    appScope.update();
+                });
+            }
+            else if (e.keyCode == 45 && !appScope.editMode) {
+                appScope.$apply(function () {
+                    appScope.showadd();
+                });
+            }
+            else if (e.keyCode == 27 && (appScope.editMode||appScope.addMode)) {
+                appScope.$apply(function () {
+                    appScope.cancel(appScope.Product);
+                });
+            }
+        });
+
+        $(document).ready(function () {
+            $(".ng-scope table").on('click', 'tr', (function () {
+                console.log("click");
+                $('.textsuccess').removeClass('textsuccess');
+                $('.activerow').removeClass('activerow');
+                $(this).addClass('activerow');
+            }));
+        });
+    </script>

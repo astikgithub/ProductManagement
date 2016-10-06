@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "UserList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div ng-app="productApp" ng-controller="userController" class="container">
+<h3 class="page-header">User Registration</h3>
+<form name="userRegisterForm" class="form-horizontal formborder-set" >
+    <fieldset>
+        <div class="form-group">
+            <label class="col-md-1">Name</label>
+            <input name="name" type="text" class="form-control col-md-2" ng-required="true" autocomplete="off" ng-model="userModel.Name" />
+            <span ng-if="userRegisterForm.name.$dirty && userRegisterForm.name.$error.required" class="col-md-2 text-danger"><b>Name is required</b></span>
+        </div>
+        <div class="form-group">
+            <label class="col-md-1">EmailId</label>
+            <input name="emailId" type="email" class="form-control col-md-2" autocomplete="off" ng-required="true" ng-model="userModel.EmailId" />
+            <span ng-if="userRegisterForm.emailId.$dirty && userRegisterForm.emailId.$error.required" class="col-md-2 text-danger"><b>EmailId is required</b></span>
+            <span ng-if="userRegisterForm.emailId.$invalid && !userRegisterForm.emailId.$error.required" class="col-md-2 text-danger"><b>Please enter valid email id</b></span>
+        </div>
+        <div class="form-group">
+             <label class="col-md-1">Mobile No</label>
+              <input name="mobileno" type="text" class="form-control col-md-2" autocomplete="off"  ng-model="userModel.MobileNo" ng-required="false" maxlength="10" />
+        </div>
+        <div class="form-group">
+             <label class="col-md-1">Password</label>
+             <input name="password" type="password" class="form-control col-md-2" autocomplete="off" ng-required="true" ng-model="userModel.Password" maxlength="10"/>
+             <span ng-if="userRegisterForm.password.$dirty && userRegisterForm.password.$error.required" class="col-md-2 text-danger"><b>Password is required</b></span>
+        </div>
+        <div class="form-group">
+             <label class="col-md-1">Confirm Password</label>
+             <input name="confirmpassword" type="password" class="form-control col-md-2" autocomplete="off" ng-required="true" ng-model="userModel.ConfirmPassword"  maxlength="10" />
+             <span ng-if="userRegisterForm.confirmpassword.$dirty && userRegisterForm.confirmpassword.$error.required" class="col-md-2 text-danger"><b>Confirm password is required</b></span>
+             <span ng-if="(userModel.Password != userModel.ConfirmPassword) && userRegisterForm.confirmpassword.$touched" class="col-md-2 text-danger"><b>Password not match</b></span>
+
+        </div>
+        <div class="form-group">
+            <input type="button" ng-disabled="userRegisterForm.$invalid" name="save" class="btn btn-primary col-md-offset-1" value="Submit"/>
+            <input type="button" name="cancel" class="btn btn-primary col-md-offset-1" value="Cancel" />
+        </div>
+    </fieldset>
+
+</form>
+</div>
+
