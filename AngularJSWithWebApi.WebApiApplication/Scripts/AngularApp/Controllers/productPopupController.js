@@ -5,12 +5,19 @@
         .module('productApp')
         .controller('productPopupController', productPopupController);
 
-    productPopupController.$inject = ['$rootScope', '$scope', 'productService', '$timeout'];
+    productPopupController.$inject = ['$rootScope', '$scope', 'productService', '$timeout', '$window'];
 
-    function productPopupController($rootScope, $scope, productService, $timeout) {
+    function productPopupController($rootScope, $scope, productService, $timeout, $window) {
         $scope.title = 'productController';
         activate();
-        function activate() { }
+        function activate() {
+            if (localStorage.getItem('CurrentUser') != null) {
+                $("#currentUser").text("Welcome " + localStorage.getItem('CurrentUser') + "   ");
+            }
+            else {
+                $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/User/UserLogin';
+            }
+        }
 
         $scope.productsData = null;
         $scope.editMode = false;

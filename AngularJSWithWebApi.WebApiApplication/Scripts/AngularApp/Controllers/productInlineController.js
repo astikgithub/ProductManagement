@@ -5,13 +5,20 @@
         .module('productApp')
         .controller('productInlineController', productInlineController);
 
-    productInlineController.$inject = ['$rootScope', '$scope', 'productService', '$timeout'];
+    productInlineController.$inject = ['$rootScope', '$scope', 'productService', '$timeout', '$window'];
 
-    function productInlineController($rootScope, $scope, productService, $timeout) {
+    function productInlineController($rootScope, $scope, productService, $timeout, $window) {
         $scope.title = 'productDataController';
         activate();
 
-        function activate() { }
+        function activate() {
+            if (localStorage.getItem('CurrentUser') != null) {
+                $("#currentUser").text("Welcome " + localStorage.getItem('CurrentUser')+"   ");
+            }
+            else {
+                $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/User/UserLogin';
+            }
+        }
 
         $scope.productsData = [];
         $scope.product = null;
@@ -106,17 +113,12 @@
             $scope.getToggleFilterData(data);
         }
         //End Toggle filter
-
         $scope.getTemplate = function (data) {
             if ($scope.product == null) return 'display';
             else if (data.ProductId == "" && !$scope.editMode) return 'edit';
             else if (data.ProductId == $scope.product.ProductId && $scope.editData && $scope.editMode) return 'edit';
             else return 'display';
         }
-
-        productService.GetCurrentUser().success(function (data) {
-            $("#currentUser").text("Welcome to " + data);
-        })
 
         productService.GetAllRecords().success(function (data) {
             $scope.productsData = data;

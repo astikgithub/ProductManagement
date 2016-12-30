@@ -1,24 +1,43 @@
 ﻿
+@{
+    ViewBag.Title = "UserList";
+    Layout = "";
+}
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/AngularApp/Vendor/angular.min.js"></script>
+<script src="~/Scripts/AngularApp/Vendor/angular-route.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.js"></script>
+<link href="~/Content/jquery-ui-themes-1.10.2/jquery-ui-themes-1.10.2/themes/blitzer/jquery-ui.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-ui-1.10.2.js"></script>
+<script src="~/Scripts/AngularApp/Directives/dirPagination.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<link href="~/Content/Common.css" rel="stylesheet" />
+<script src="~/Scripts/AngularApp/App/productApp.js"></script>
+<script src="~/Scripts/AngularApp/Controllers/productPopupController.js"></script>
+<script src="~/Scripts/AngularApp/Controllers/productInlineController.js"></script>
+<script src="~/Scripts/AngularApp/Controllers/userController.js"></script>
+<script src="~/Scripts/AngularApp/Services/productService.js"></script>
+<script src="~/Scripts/AngularApp/Directives/dirAutoComplete.js"></script>
+<script src="~/Scripts/AngularApp/Services/userService.js"></script>
+<script src="~/Scripts/AngularApp/Directives/dirOutsideClick.js"></script>
+@Styles.Render("~/Content/css")
+@Scripts.Render("~/bundles/modernizr")
+@Scripts.Render("~/bundles/bootstrap")
 <div ng-app="productApp" ng-controller="userController" class="container" ng-cloak>
 
     <form name="userLoginForm" class="form-horizontal formborder-set-login col-md-4">
-            <h3 class="page-header">User Login</h3>
-            <div ng-if="error" class="alert alert-danger" role="alert">
-            <button type="button" class="close"><span ng-click="error=false">×</span><span class="sr-only">Close</span></button>
-            <p class="col-md-push-5">{{successMessage}}</p>
-        </div>
+            <h3 class="page-header text-center">User Login</h3>
+            <span ng-if="error" class="col-md-offset-1 text-danger"><b>{{successMessage}}</b></span>
             <span ng-if="userLoginForm.emailId.$invalid && !userLoginForm.emailId.$error.required" class="col-md-offset-3 text-danger"><b>Please enter valid email id</b></span>
-        <div></div>  
-         <div class="form-group">
-                <label class="col-md-1">EmailId</label>
-                <input name="emailId" type="email" class="form-control col-md-push-2 col-md-4" autocomplete="off" ng-required="true" ng-model="userModel.EmailId" />
+           <div></div>  
+           <div class="form-group">
+                <input name="emailId" type="email" class="form-control col-md-offset-2 col-md-2" autocomplete="off" ng-required="true" ng-model="userModel.EmailId" placeholder="Email Id" />
             </div>
             <div class="form-group">
-                <label class="col-md-1">Password</label>
-                <input name="password" type="password" class="form-control col-md-push-2 col-md-4" autocomplete="off" ng-required="true" ng-model="userModel.Password" maxlength="10" />
+                <input name="password" type="password" class="form-control col-md-offset-2 col-md-2" autocomplete="off" ng-required="true" ng-model="userModel.Password" maxlength="10" placeholder="Password" />
             </div>
             <div class="form-group">
-                <input type="button" ng-disabled="userLoginForm.$invalid" name="save" ng-click="userLogin(userModel)" class="btn btn-primary col-md-offset-4" value="Login" />
+                <input type="button" ng-disabled="userLoginForm.$invalid" name="save" ng-click="userLogin(userModel)" class="btn btn-primary col-md-offset-5" value="Login" />
             </div>
     </form>
 </div>

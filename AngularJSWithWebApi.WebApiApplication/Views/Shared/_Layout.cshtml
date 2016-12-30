@@ -39,7 +39,9 @@
                     <li class="navbar-link" ng-click="active='PopupEdit'">@Html.ActionLink("Popup Edit", "Product", "Product")</li>
                     <li class="navbar-link" ng-click="active='UserLi'">@Html.ActionLink("User Registration", "UserList","User")</li>
                 </ul>
-                <h4 class="navbar-right text-primary" id="currentUser"></h4>
+
+                <h4 class="pull-right text-primary" id="Logout"><a href="" id="lklogout">LogOut</a></h4>
+                <h4 class="pull-right text-primary" style="margin-right:25px" id="currentUser"></h4>
             </div>
           
         </div>
@@ -64,4 +66,9 @@
         $('ul.dropdown-menu').on('click', function (event) {
             event.stopPropagation();
         });
+
+        $("#lklogout").click(function () {
+            window.localStorage.clear();
+            window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/User/UserLogin';
+        })
 </script> 

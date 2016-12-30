@@ -5,13 +5,21 @@
         .module('productApp')
         .controller('userController', userController);
 
-    userController.$inject = ['$scope', 'userService','$timeout'];
+    userController.$inject = ['$scope', 'userService', '$timeout', '$location', '$window'];
 
-    function userController($scope, userService, $timeout) {
+    function userController($scope, userService, $timeout, $location, $window) {
         $scope.title = 'userController';
         activate();
 
-        function activate() { }
+        function activate() {
+            if (localStorage.getItem('CurrentUser') != null && $window.location.pathname== "/AngularJSWithWebApi.WebApiApplication/User/UserLogin") {
+                $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/Product/ProductInline';
+            }
+            if (localStorage.getItem('CurrentUser') == null) {
+                $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/User/UserLogin';
+            }
+        }
+
         $scope.userModel = {UserId:'',Name:'',EmailId:'',MobileNo:'', IsAdmin:'', CreatedDate:'', UpdatedDate:'', Password:'', ConfirmPassword:''}
         $scope.usersData = [];
 
@@ -63,7 +71,8 @@
                         $scope.displayMessage('error', data.Message);
                     }
                     else {
-                        $("#currentUser").text("Welcome to " + data.CurrentUser);
+                        localStorage.setItem('CurrentUser', data.CurrentUser);
+                        $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/Product/ProductInline';
                     }
                 });
             }

@@ -14,8 +14,8 @@ namespace AngularJSWithWebApi.WebApiApplication {
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new {
-                    controller = "Product",
-                    action = "Product",
+                    controller = "User",
+                    action = "UserLogin",
                     id = UrlParameter.Optional
                 }
             );
