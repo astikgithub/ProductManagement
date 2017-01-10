@@ -12,11 +12,14 @@
         activate();
 
         function activate() {
-            if (localStorage.getItem('CurrentUser') != null && $window.location.pathname== "/AngularJSWithWebApi.WebApiApplication/User/UserLogin") {
+            if (localStorage.getItem('CurrentUser') != null && $window.location.pathname == "/AngularJSWithWebApi.WebApiApplication/User/UserLogin") {
                 $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/Product/ProductInline';
             }
-            if (localStorage.getItem('CurrentUser') == null) {
+            else if (localStorage.getItem('CurrentUser') == null && $window.location.pathname != "/AngularJSWithWebApi.WebApiApplication/User/UserLogin" ) {
                 $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/User/UserLogin';
+            }
+            else {
+                $("#currentUser").text("Welcome " + localStorage.getItem('CurrentUser') + "   ");
             }
         }
 
