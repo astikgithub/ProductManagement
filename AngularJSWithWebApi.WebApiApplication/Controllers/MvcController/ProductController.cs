@@ -12,15 +12,26 @@ namespace AngularJSWithWebApi.WebApiApplication.Controllers.MvcController
     [Authorize]
     public class ProductController : Controller
     {
-        // GET: Product
+        /// <summary>
+        /// Product
+        /// </summary>
+        /// <returns></returns>
         public ActionResult Product() {
             return View();
         }
 
+        /// <summary>
+        /// ProductInline
+        /// </summary>
+        /// <returns></returns>
         public ActionResult ProductInline() {
             return View();
         }
 
+        /// <summary>
+        /// GetCurrentUser
+        /// </summary>
+        /// <returns></returns>
         public string GetCurrentUser() {
             string UserName = Request.LogonUserIdentity.Name;
             TextInfo tf = new CultureInfo("en-US", false).TextInfo;
