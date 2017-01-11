@@ -7,19 +7,6 @@
 <div ng-app="productApp" ng-controller="userController" class="container" ng-cloak>
 <h3 class="page-header">User Registration</h3>
 
-        <div ng-if="error" class="alert alert-danger" role="alert">
-            <button type="button" class="close"><span ng-click="error=false">×</span><span class="sr-only">Close</span></button>
-            <p>{{successMessage}}</p>
-        </div>
-        <div ng-if="success" class="alert alert-success" role="alert">
-            <button type="button" class="close"><span ng-click="success=false">×</span><span class="sr-only">Close</span></button>
-            <p>{{successMessage}}</p>
-        </div>
-        <div ng-if="warning" class="alert alert-warning" role="alert">
-            <button type="button" class="close"><span ng-click="warning=false">×</span><span class="sr-only">Close</span></button>
-            <p>{{successMessage}}</p>
-        </div>
-
 <form name="userRegisterForm" class="form-horizontal formborder-set" >
     <fieldset>
         <div class="form-group">

@@ -788,6 +788,8 @@
     <None Include="Properties\PublishProfiles\ProductManagement.pubxml" />
     <Content Include="Scripts\AngularApp\Vendor\angular-route.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\JavaScriptLibraries\SweetAlert\sweetalert.css" />
+    <Content Include="Scripts\JavaScriptLibraries\SweetAlert\sweetalert.min.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-ui-1.10.2.js" />

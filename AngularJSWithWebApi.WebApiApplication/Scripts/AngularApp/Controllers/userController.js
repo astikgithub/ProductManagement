@@ -34,9 +34,9 @@
             userService.AddUser(userModel).success(function (data) {
                 $scope.userModel = data;
                 $scope.userModel.ConfirmPassword = data.Password;
-                $scope.displayMessage("success", "User added successfully");
+                swal("Success!", "User added successfully", "success");
             }).error(function (data) {
-                $scope.displayMessage("error", data.ExceptionMessage);
+                swal("Error!", data.ExceptionMessage, "error");
             });
         }
 
@@ -44,34 +44,12 @@
             $scope.userModel = "";
         }
 
-        $scope.displayMessage = function (type, message) {
-            $scope.successMessage = message;
-            if (type == "error") {
-                $scope.error = true;
-                $timeout(function () {
-                    $scope.error = false;
-                }, 3000)
-            }
-            else if (type == "warning") {
-                $scope.warning = true;
-                $timeout(function () {
-                    $scope.warning = false;
-                }, 3000)
-            }
-            else {
-                $scope.success = true;
-                $timeout(function () {
-                    $scope.success = false;
-                }, 3000)
-            }
-        };
-
         //Login
         $scope.userLogin = function (userModel) {
             if(userModel.Password !=null && userModel.EmailId !=null){
                 userService.CheckLoginUser(userModel).success(function (data) {
                     if (data.Error) {
-                        $scope.displayMessage('error', data.Message);
+                        swal("Error!", data.Message, "error");
                     }
                     else {
                         localStorage.setItem('CurrentUser', data.CurrentUser);
@@ -79,10 +57,7 @@
                     }
                 });
             }
-
-
         }
-
         //End Login
     }
 })();

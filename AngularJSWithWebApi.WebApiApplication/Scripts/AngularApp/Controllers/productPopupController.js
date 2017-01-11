@@ -121,7 +121,7 @@
             $scope.loadingImg = false;
         },
         function () {
-            $scope.displayMessage("error", "Error occurs!");
+            sweetAlert("Oops...", "Something went wrong!", "error");
             $scope.loadingImg = false;
         });
 
@@ -134,13 +134,13 @@
                     $scope.editidData = response.ProductId;
                     $('#productModel').modal('hide');
                     $scope.editMode = false;
-                    $scope.displayMessage("success", "Product added successfully");
+                    swal("Success!", "Product added successfully", "success");
                 }, function errorCallback(response) {
-                    $scope.displayMessage("error", "Error : " + response.data.ExceptionMessage);
+                    swal("Error!", response.data.ExceptionMessage, "error");
                 });
             }
             else 
-                $scope.displayMessage("error", "Please Enter All the Values !!");
+                swal("Error!", "Please Enter All the Values !! ", "error");
         };
 
         // Edit product data
@@ -162,28 +162,25 @@
                         $scope.editMode = false;
                         $scope.editidData = response.ProductId;
                         $('#productModel').modal('hide');
-                        $scope.displayMessage("success", "Product updated successfully");
+                        swal("Success!", "Product updated successfully", "success");
                     }, function errorCallback(response) {
-                        $scope.displayMessage("error", "Error : " + response.data.ExceptionMessage);
+                        swal("Error!", response.data.ExceptionMessage, "error");
                     });
                 }
             }
             else {
-                $scope.displayMessage("error", "Please Enter All the Values !!");
+                swal("Error!", "Please Enter All the Values !! ", "error");
             }
         };
 
         // Delete product data
         $scope.delete = function () {
-            productService.DeleteProduct($scope.Product.ProductId).then(function successCallback(response) {
-                $('#confirmModal').modal('hide');
-                $scope.displayMessage("success", "Product deleted successfully");
-                productService.GetAllRecords().then(function (data) {
-                    $scope.productsData = data;
-                });
+            var index = $scope.productsData.indexOf(this.product);
+            productService.DeleteProduct($scope.Product.ProductId).success(function (data) {
+                $scope.productsData.splice(index, 1);
+                swal("Deleted!", "Product deleted successfully", "success");
             }, function errorCallback(response) {
-                $scope.displayMessage("error", "Error : " + response.data.ExceptionMessage);
-                $('#confirmModal').modal('hide');
+                swal("Error!", response.data.ExceptionMessage, "error");
             });
         };
 
@@ -207,13 +204,26 @@
             $scope.Product = null;
             $scope.editMode = false;
             $scope.addMode = true;
+            $scope.addProductForm.$setPristine();
+            $scope.addProductForm.$setUntouched();
             $("#productModel").modal('show');
         };
 
         // Delete confirmation
         $scope.showconfirm = function (data) {
             $scope.Product = data;
-            $("#confirmModal").modal('show');
+            swal({
+                title: "Are you sure?",
+                text: "Are you sure to delete this record!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+            function () {
+                $scope.delete();
+            });
         };
 
         // Cancel button
@@ -230,29 +240,6 @@
             $scope.editidData = "";
             $(':input', '#addProductForm').val("");
             $("#productModel").modal('hide');
-        };
-
-        // Error and Success message 
-        $scope.displayMessage = function (type, message) {
-            $scope.successMessage = message;
-            if (type == "error") {
-                $scope.error = true;
-                $timeout(function () {
-                    $scope.error = false;
-                }, 3000)
-            }
-            else if (type == "warning") {
-                $scope.warning = true;
-                $timeout(function () {
-                    $scope.warning = false;
-                }, 3000)
-            }
-            else {
-                $scope.success = true;
-                $timeout(function () {
-                    $scope.success = false;
-                }, 3000)
-            }
         };
 
         // Product sorting
@@ -277,7 +264,7 @@
             else {
                 if (obj.cbProduct) {
                     obj.cbProduct = false;
-                    $scope.displayMessage("warning", "At least one column sholud be visible");
+                    swal("Warning!", "At least one column sholud be visible", "warning");
                 }
                 return false;
             }

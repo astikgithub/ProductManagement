@@ -124,7 +124,7 @@
             $scope.productsData = data;
             $scope.loadingImg = false;
         }, function () {
-            $scope.displayMessage("error", "Error occurs!");
+            swal("Error!", "Error occurs!", "error");
             $scope.loadingImg = false;
         });
 
@@ -134,13 +134,13 @@
                     $scope.editidData = data.ProductId;
                     $scope.addMode = false;
                     $scope.product.ProductId = data.ProductId;
-                    $scope.displayMessage("success", "Product added successfully");
+                    swal("Success!", "Product added successfully", "success");
                 }).error(function (data) {
-                    $scope.displayMessage("error", "Error : " + data.ExceptionMessage);
+                    swal("Error!", data.ExceptionMessage, "error");
                 });
             }
             else {
-                $scope.displayMessage("error", "Please Enter All the Values !! ");
+                swal("Error!", "Please Enter All the Values !! ", "error");
             }
         };
 
@@ -168,14 +168,14 @@
                     productService.UpdateProduct(this.product).success(function (data) {
                         $scope.editidData = data.ProductId;
                         $scope.editData = false;
-                        $scope.displayMessage("success", "Product updated successfully");
+                        swal("Success!", "Product updated successfully", "success");
                     }).error(function (data) {
-                        $scope.displayMessage("error", "Error : " + data.ExceptionMessage);
+                        swal("Error!", data.ExceptionMessage, "error");
                     });
                 }
             }
             else {
-                $scope.displayMessage("error", "Please Enter All the Values !! ");
+                swal("Error!", "Please Enter All the Values !! ", "error");
             }
         };
 
@@ -189,11 +189,9 @@
             var index = $scope.productsData.indexOf(this.product);
             productService.DeleteProduct(this.product.ProductId).success(function (data) {
                 $scope.productsData.splice(index, 1);
-                $('#confirmModal').modal('hide');
-                $scope.displayMessage("success", "Product deleted successfully");
+                swal("Deleted!", "Product deleted successfully", "success");
             }).error(function (data) {
-                $scope.displayMessage("error", "Error : " + data.ExceptionMessage);
-                $('#confirmModal').modal('hide');
+                swal("Error!", data.ExceptionMessage, "error");
             });
         };
 
@@ -222,7 +220,18 @@
         $scope.showconfirm = function (data) {
             $scope.product = data;
             $scope.editData = false;
-            $("#confirmModal").modal('show');
+            swal({
+            title: "Are you sure?",
+            text: "Are you sure to delete this record!",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Yes, delete it!",
+            closeOnConfirm: false
+        },
+            function(){
+                 $scope.delete();
+            });
         };
 
         $scope.cancel = function (data) {
@@ -238,28 +247,6 @@
             $scope.addMode = false
             $scope.product = null;
             $scope.editData = false;
-        };
-
-        $scope.displayMessage = function (type, message) {
-            $scope.successMessage = message;
-            if (type == "error") {
-                $scope.error = true;
-                $timeout(function () {
-                    $scope.error = false;
-                }, 3000)
-            }
-            else if (type == "warning") {
-                $scope.warning = true;
-                $timeout(function () {
-                    $scope.warning = false;
-                }, 3000)
-            }
-            else {
-                $scope.success = true;
-                $timeout(function () {
-                    $scope.success = false;
-                }, 3000)
-            }
         };
 
         $scope.sortingList = function (columnName) {
@@ -293,7 +280,7 @@
             else {
                 if (obj.cbProduct) {
                     obj.cbProduct = false;
-                    $scope.displayMessage("warning", "At least one column sholud be visible");
+                    swal("Warning!", "At least one column sholud be visible", "warning");
                 }
                 return false;
             }
