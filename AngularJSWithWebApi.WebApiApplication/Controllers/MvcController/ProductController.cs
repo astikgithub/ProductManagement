@@ -29,6 +29,14 @@ namespace AngularJSWithWebApi.WebApiApplication.Controllers.MvcController
         }
 
         /// <summary>
+        /// ProductInCell
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult ProductInCell() {
+            return View();
+        }
+
+        /// <summary>
         /// GetCurrentUser
         /// </summary>
         /// <returns></returns>

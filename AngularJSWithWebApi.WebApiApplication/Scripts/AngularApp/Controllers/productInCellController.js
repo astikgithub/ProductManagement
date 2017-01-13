@@ -3,20 +3,17 @@
 
     angular
         .module('productApp')
-        .controller('productInlineController', productInlineController);
+        .controller('productInCellController', productInCellController);
 
-    productInlineController.$inject = ['$rootScope', '$scope', 'productService', '$timeout', '$window'];
+    productInCellController.$inject = ['$rootScope', '$scope', 'productService', '$timeout', '$window'];
 
-    function productInlineController($rootScope, $scope, productService, $timeout, $window) {
-        $scope.title = 'productDataController';
+    function productInCellController($rootScope, $scope, productService, $timeout, $window) {
+        $scope.title = 'productInCellDataController';
         activate();
 
         function activate() {
             if (localStorage.getItem('CurrentUser') != null) {
                 $("#currentUser").text("Welcome " + localStorage.getItem('CurrentUser') + "   ");
-                if (localStorage.getItem('FirstTimeLogin')) {
-                    localStorage.setItem('FirstTimeLogin', false);
-                }
             }
             else {
                 $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/User/UserLogin';
@@ -108,7 +105,7 @@
             }).error(function () {
                 $scope.loadingImg = false;
             });
-            
+
         }
         $scope.clearToggleFilterData = function (data) {
             $scope.filterValue[data] = "";
@@ -224,16 +221,16 @@
             $scope.product = data;
             $scope.editData = false;
             swal({
-            title: "Are you sure?",
-            text: "Are you sure to delete this record!",
-            type: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
-            confirmButtonText: "Yes, delete it!",
-            closeOnConfirm: false
-        },
-            function(){
-                 $scope.delete();
+                title: "Are you sure?",
+                text: "Are you sure to delete this record!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Yes, delete it!",
+                closeOnConfirm: false
+            },
+            function () {
+                $scope.delete();
             });
         };
 

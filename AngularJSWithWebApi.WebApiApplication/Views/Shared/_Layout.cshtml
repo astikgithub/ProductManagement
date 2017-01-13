@@ -16,6 +16,7 @@
     <script src="~/Scripts/AngularApp/App/productApp.js"></script>
     <script src="~/Scripts/AngularApp/Controllers/productPopupController.js"></script>
     <script src="~/Scripts/AngularApp/Controllers/productInlineController.js"></script>
+    <script src="~/Scripts/AngularApp/Controllers/productInCellController.js"></script>
     <script src="~/Scripts/AngularApp/Controllers/userController.js"></script>
     <script src="~/Scripts/AngularApp/Services/productService.js"></script>
     <script src="~/Scripts/AngularApp/Directives/dirAutoComplete.js"></script>
@@ -39,6 +40,7 @@
                 <ul class="nav navbar-nav">
                     <li class="navbar-link" ng-click="active='InlineEdit'">@Html.ActionLink("Inline Edit", "ProductInline", "Product")</li>
                     <li class="navbar-link" ng-click="active='PopupEdit'">@Html.ActionLink("Popup Edit", "Product", "Product")</li>
+                    <li class="navbar-link" ng-click="active='PoInCellEdit'">@Html.ActionLink("InCell Edit", "ProductInCell", "Product")</li>
                     <li class="navbar-link" ng-click="active='UserLi'">@Html.ActionLink("User Registration", "UserList","User")</li>
                 </ul>
 

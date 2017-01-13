@@ -50,10 +50,19 @@
                 userService.CheckLoginUser(userModel).success(function (data) {
                     if (data.Error) {
                         swal("Error!", data.Message, "error");
+                        localStorage.setItem('FirstTimeLogin', false);
                     }
                     else {
                         localStorage.setItem('CurrentUser', data.CurrentUser);
+                        localStorage.setItem('FirstTimeLogin', true);
                         $window.location = 'http://localhost/AngularJSWithWebApi.WebApiApplication/Product/ProductInline';
+                        swal({
+                            title: "Welcome <span style='color:#008000'>" + localStorage.getItem('CurrentUser') + "!</span>",
+                            text: "<span style='color:#F8BB86'>Product Management System<span>",
+                            html: true,
+                            timer: 1000,
+                            showConfirmButton: false
+                        });
                     }
                 });
             }

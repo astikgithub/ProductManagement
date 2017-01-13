@@ -742,6 +742,7 @@
     <Content Include="Global.asax" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="Scripts\AngularApp\Controllers\productInCellController.js" />
     <Content Include="Scripts\AngularApp\Controllers\productInlineController.js" />
     <Content Include="Scripts\AngularApp\Controllers\productPopupController.js" />
     <Content Include="Scripts\AngularApp\Controllers\userController.js" />
@@ -821,6 +822,7 @@
     <Content Include="Views\Product\ProductInline.cshtml" />
     <Content Include="Views\User\UserList.cshtml" />
     <Content Include="Views\User\UserLogin.cshtml" />
+    <Content Include="Views\Product\ProductInCell.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Scripts\AngularApp\Filters\" />
