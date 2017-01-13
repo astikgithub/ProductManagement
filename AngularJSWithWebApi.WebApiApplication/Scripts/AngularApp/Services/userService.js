@@ -5,10 +5,10 @@
         .module('productApp')
         .factory('userService', userService);
 
-    userService.$inject = ['$http'];
+    userService.$inject = ['$http', 'BaseApiUrl'];
 
-    function userService($http) {
-        var baseUrl = 'http://localhost/AngularJSWithWebApi.WebApiApplication/api/UserWebApi/';
+    function userService($http, BaseApiUrl) {
+        var baseUrl = BaseApiUrl+'/UserWebApi/';
         var service = {
             getUserList: getUserList,
             getUserById: getUserById,

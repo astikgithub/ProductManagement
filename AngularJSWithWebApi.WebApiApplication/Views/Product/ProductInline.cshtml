@@ -167,7 +167,11 @@
             </div>
 
  </div>
-
+<style>
+    tbody:nth-child(even) {
+    background-color: ghostwhite;
+}
+</style>
 <script>
     $(document).keydown(function (e) {
         var appElement = document.querySelector('[ng-app=productApp]');
@@ -202,7 +206,11 @@
             $('.activerow').removeClass('activerow');
             $(this).addClass('activerow');
         });
-
+        
+        $("[ng-app=productApp]").click(function ()
+        {
+            $('.textsuccess').removeClass('textsuccess');
+        })
         //var pressed = false;
         //var start = undefined;
         //var startX, startWidth;

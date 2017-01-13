@@ -18,5 +18,5 @@
                 controller:'userController'
             })
     });
-
+  app.constant('BaseApiUrl', 'http://localhost/AngularJSWithWebApi.WebApiApplication/api/');
 })();
